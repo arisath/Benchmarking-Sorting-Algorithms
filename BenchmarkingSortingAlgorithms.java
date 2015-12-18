@@ -89,7 +89,6 @@ public class BenchmarkingSortingAlgorithms
         {
             int key = array[i];
 
-
             for (j = i - 1; (j >= 0) && (key < array[j]); j--)
             {
                 array[j + 1] = array[j];
