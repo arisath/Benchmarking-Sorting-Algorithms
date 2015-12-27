@@ -9,8 +9,8 @@ The following sorting algorithms are included in the class Benchmarking:
 - **mergesort**             Average case: **O(n log(n))**  Worst case: **O(n log(n))**
 
 
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+| Algorithm     | Best Case           | Average Case  | Worst Case |
+| ------------- |:-------------:| -----:| -----:|     -----:|
+| bubblesort      | right-aligned | O(n^2) |O(n^2) |
+| selectionsort      | centered      |   $12 | O(n^2) |
+| insertionsort | are neat      |    $1 | O(n^2) |
