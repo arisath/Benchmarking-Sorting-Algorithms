@@ -248,7 +248,7 @@ public class BenchmarkingSortingAlgorithms
     }
 
     /**
-     * Prints the elements of one dimensional array
+     * Prints the elements of  one dimensional array of type int
      * @param array
      */
     static void printArray(int[] array)
