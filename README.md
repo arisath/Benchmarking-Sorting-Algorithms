@@ -11,6 +11,6 @@ The following sorting algorithms are included in the class Benchmarking:
 
 | Algorithm     | Best Case           | Average Case  | Worst Case |
 | ------------- |:-------------:| -----:| -----:|     -----:|
-| bubblesort      | right-aligned | O(n^2) |O(n^2) |
-| selectionsort      | centered      |   $12 | O(n^2) |
-| insertionsort | are neat      |    $1 | O(n^2) |
+| bubblesort      | O(n) | O(n^2) |O(n^2) |
+| selectionsort      | O(n^2)      |   O(n^2) | O(n^2) |
+| insertionsort | are neat      |    O(n^2) | O(n^2) |
