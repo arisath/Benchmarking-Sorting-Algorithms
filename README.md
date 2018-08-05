@@ -14,7 +14,7 @@ The following sorting algorithms are included in the class Benchmarking:
 
 The following metrics have been performed on a 2.4 GHz Intel Core i7:
 
-| Algorithm | 10000 Entries | 100000 Entries | 100000 Entries |
+| Algorithm | 10000 Entries | 100000 Entries | 1000000 Entries |
 | --------- | --------- | ----------- | ---------- | 
 | bubblesort | 241 ms | 29.2 s | 48.5 mins | 
 | selectionsort | 33 ms | 1.9 s | 2.9 mins | 
