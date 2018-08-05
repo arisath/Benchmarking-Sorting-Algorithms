@@ -12,7 +12,7 @@ The following sorting algorithms are included in the class Benchmarking:
 | **mergesort** | O(n log(n)) | O(n log(n)) | O(n log(n)) |
 
 
-The following metrics have been performed on a 2.4 GHz Intel Core i7:
+The following metrics have been conducted on a 2.4 GHz Intel Core i7:
 
 | Algorithm | 10000 Entries | 100000 Entries | 1000000 Entries |
 | --------- | --------- | ----------- | ---------- | 
