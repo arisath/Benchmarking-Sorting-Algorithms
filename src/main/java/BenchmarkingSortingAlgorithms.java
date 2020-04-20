@@ -1,8 +1,10 @@
+import me.tongfei.progressbar.*;
+
 public class BenchmarkingSortingAlgorithms
 {
     public static void main(String[] args)
     {
-        int[] unsortedArray = createArrayWithRandomInts(1000000);
+        int[] unsortedArray = createArrayWithRandomInts(100000);
 
         bubbleSort(unsortedArray);
         selectionSort(unsortedArray);
@@ -21,12 +23,17 @@ public class BenchmarkingSortingAlgorithms
     static int[] bubbleSort(int[] array)
     {
         int temp;
-        long start = System.currentTimeMillis();
         boolean alreadySorted = true;
-        for (int i = 0; i < array.length; i++)
+        long start = System.currentTimeMillis();
+        try (ProgressBar pb  = new ProgressBar("BubbleSort Progress", array.length))
         {
+            for (int i = 0; i < array.length; i++)
+        {
+            pb.step();
+
             for (int j = 0; j < array.length - 1; j++)
             {
+
                 if (array[j] > array[j + 1])
                 {
                     alreadySorted = false;
@@ -34,14 +41,19 @@ public class BenchmarkingSortingAlgorithms
                     array[j + 1] = array[j];
                     array[j] = temp;
                 }
+                pb.setExtraMessage("Reading...");
             }
             if (alreadySorted == true)
             {
                 break;
             }
+            pb.setExtraMessage("Completed");
         }
-        long end = System.currentTimeMillis();
-        System.out.println("Array sorted with bubble sort in :" + (end - start) + "ms");
+            long end = System.currentTimeMillis();
+            System.out.println("Array sorted with bubble sort in :" + (end - start) + "ms");
+
+        }
+
         return array;
     }
 
@@ -56,19 +68,26 @@ public class BenchmarkingSortingAlgorithms
         int min;
         int pos = 0;
         long start = System.currentTimeMillis();
-        for (int i = 0; i < array.length - 1; i++)
+        try (ProgressBar pb  = new ProgressBar("Selection Progress", array.length))
         {
-            min = array[i];
-            for (int j = i + 1; j < array.length; j++)
+            for (int i = 0; i < array.length - 1; i++)
             {
-                if (array[j] < min)
+                pb.step();
+
+                min = array[i];
+                for (int j = i + 1; j < array.length; j++)
                 {
-                    min = array[j];
-                    pos = j;
+                    if (array[j] < min)
+                    {
+                        min = array[j];
+                        pos = j;
+                    }
                 }
+                array[pos] = array[i];
+                array[i] = min;
             }
-            array[pos] = array[i];
-            array[i] = min;
+            pb.setExtraMessage("Completed");
+
         }
         long end = System.currentTimeMillis();
         System.out.println("Array sorted with selection sort in :" + (end - start) + "ms");
@@ -85,15 +104,23 @@ public class BenchmarkingSortingAlgorithms
     {
         long start = System.currentTimeMillis();
         int j;
-        for (int i = 1; i < array.length; i++)
-        {
-            int key = array[i];
 
-            for (j = i - 1; (j >= 0) && (key < array[j]); j--)
+        try (ProgressBar pb  = new ProgressBar("Insertion Progress", array.length))
+        {
+            for (int i = 1; i < array.length; i++)
             {
-                array[j + 1] = array[j];
+                pb.step();
+
+                int key = array[i];
+
+                for (j = i - 1; (j >= 0) && (key < array[j]); j--)
+                {
+                    array[j + 1] = array[j];
+                }
+                array[j + 1] = key;
             }
-            array[j + 1] = key;
+            pb.setExtraMessage("Completed");
+
         }
         long end = System.currentTimeMillis();
         System.out.println("Array sorted with insertion sort in :" + (end - start) + "ms");
@@ -112,36 +139,39 @@ public class BenchmarkingSortingAlgorithms
         int pivot = array[low + ((high - low) / 2)];
         int i = low;
         int j = high;
-        while (i <= j)
-        {
-            while (array[i] < pivot)
-            {
-                i++;
-            }
-            while (array[j] > pivot)
-            {
-                j--;
-            }
-            if (i <= j)
-            {
-                int temp = array[i];
-                array[i] = array[j];
-                array[j] = temp;
-                i++;
-                j--;
-            }
-        }
 
-        if (low < j)
-        {
-            quickSort(array, low, j);
-        }
 
-        if (i < high)
-        {
-            quickSort(array, i, high);
+            while (i <= j)
+            {
+
+                while (array[i] < pivot)
+                {
+                    i++;
+                }
+                while (array[j] > pivot)
+                {
+                    j--;
+                }
+                if (i <= j)
+                {
+                    int temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                    i++;
+                    j--;
+                }
+            }
+
+            if (low < j)
+            {
+                quickSort(array, low, j);
+            }
+
+            if (i < high)
+            {
+                quickSort(array, i, high);
+            }
         }
-    }
 
     /**
      * Helping method to benchmark quick sort's execution time
